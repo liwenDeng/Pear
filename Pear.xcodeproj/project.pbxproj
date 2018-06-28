@@ -1,0 +1,731 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BCB4A91720E4C1D3009E4AF1 /* MDConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCB4A91620E4C1D3009E4AF1 /* MDConfig.plist */; };
+		BCB4A92120E4C1D4009E4AF1 /* libPearDylib.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = BCB4A92020E4C1D4009E4AF1 /* libPearDylib.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		BCB4A92620E4C1D4009E4AF1 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB4A92520E4C1D4009E4AF1 /* JavaScriptCore.framework */; };
+		BCB4A92820E4C1D4009E4AF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB4A92720E4C1D4009E4AF1 /* Foundation.framework */; };
+		BCB4A92A20E4C1D4009E4AF1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB4A92920E4C1D4009E4AF1 /* UIKit.framework */; };
+		BCB4A92F20E4C1D4009E4AF1 /* PearDylib.mm in Sources */ = {isa = PBXBuildFile; fileRef = BCB4A92E20E4C1D4009E4AF1 /* PearDylib.mm */; };
+		BCB4A93220E4C1D4009E4AF1 /* MDConfigManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BCB4A93120E4C1D4009E4AF1 /* MDConfigManager.h */; };
+		BCB4A93420E4C1D4009E4AF1 /* MDConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB4A93320E4C1D4009E4AF1 /* MDConfigManager.m */; };
+		BCB4A93620E4C1D4009E4AF1 /* MDCycriptManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BCB4A93520E4C1D4009E4AF1 /* MDCycriptManager.h */; };
+		BCB4A93820E4C1D4009E4AF1 /* MDCycriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB4A93720E4C1D4009E4AF1 /* MDCycriptManager.m */; };
+		BCB4A93A20E4C1D4009E4AF1 /* MDMethodTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = BCB4A93920E4C1D4009E4AF1 /* MDMethodTrace.h */; };
+		BCB4A93C20E4C1D4009E4AF1 /* MDMethodTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB4A93B20E4C1D4009E4AF1 /* MDMethodTrace.m */; };
+		BCB4A93E20E4C1D4009E4AF1 /* ANYMethodLog.h in Headers */ = {isa = PBXBuildFile; fileRef = BCB4A93D20E4C1D4009E4AF1 /* ANYMethodLog.h */; };
+		BCB4A94020E4C1D4009E4AF1 /* ANYMethodLog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB4A93F20E4C1D4009E4AF1 /* ANYMethodLog.m */; };
+		BCB4A94320E4C1D4009E4AF1 /* LLDBTools.h in Headers */ = {isa = PBXBuildFile; fileRef = BCB4A94220E4C1D4009E4AF1 /* LLDBTools.h */; };
+		BCB4A94520E4C1D4009E4AF1 /* LLDBTools.mm in Sources */ = {isa = PBXBuildFile; fileRef = BCB4A94420E4C1D4009E4AF1 /* LLDBTools.mm */; };
+		BCB4A94A20E4C1D4009E4AF1 /* AntiAntiDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB4A94920E4C1D4009E4AF1 /* AntiAntiDebug.m */; };
+		BCB4A94D20E4C1D4009E4AF1 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = BCB4A94C20E4C1D4009E4AF1 /* fishhook.c */; };
+		BCB4A94F20E4C1D4009E4AF1 /* fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = BCB4A94E20E4C1D4009E4AF1 /* fishhook.h */; };
+		BCB4A95120E4C1D4009E4AF1 /* PearDylib.h in Headers */ = {isa = PBXBuildFile; fileRef = BCB4A95020E4C1D4009E4AF1 /* PearDylib.h */; };
+		BCB4A95320E4C1D4009E4AF1 /* PearDylib.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB4A95220E4C1D4009E4AF1 /* PearDylib.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BCB4A92220E4C1D4009E4AF1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCB4A90320E4C1D3009E4AF1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCB4A91F20E4C1D4009E4AF1;
+			remoteInfo = PearDylib;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BCB4A90B20E4C1D3009E4AF1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BCB4A92120E4C1D4009E4AF1 /* libPearDylib.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		BCB4A90E20E4C1D3009E4AF1 /* Pear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pear.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCB4A91120E4C1D3009E4AF1 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		BCB4A91220E4C1D3009E4AF1 /* Target.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Target.plist; sourceTree = "<group>"; };
+		BCB4A91420E4C1D3009E4AF1 /* quick-resign.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = "quick-resign.sh"; path = "Scripts/quick-resign.sh"; sourceTree = "<group>"; };
+		BCB4A91620E4C1D3009E4AF1 /* MDConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = MDConfig.plist; path = Config/MDConfig.plist; sourceTree = "<group>"; };
+		BCB4A91920E4C1D3009E4AF1 /* put ipa or app here */ = {isa = PBXFileReference; lastKnownFileType = text; name = "put ipa or app here"; path = "TargetApp/put ipa or app here"; sourceTree = "<group>"; };
+		BCB4A91A20E4C1D3009E4AF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCB4A92020E4C1D4009E4AF1 /* libPearDylib.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libPearDylib.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCB4A92520E4C1D4009E4AF1 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		BCB4A92720E4C1D4009E4AF1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BCB4A92920E4C1D4009E4AF1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BCB4A92D20E4C1D4009E4AF1 /* PearDylib.xm */ = {isa = PBXFileReference; lastKnownFileType = text; name = PearDylib.xm; path = Logos/PearDylib.xm; sourceTree = "<group>"; };
+		BCB4A92E20E4C1D4009E4AF1 /* PearDylib.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = PearDylib.mm; path = Logos/PearDylib.mm; sourceTree = "<group>"; };
+		BCB4A93120E4C1D4009E4AF1 /* MDConfigManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MDConfigManager.h; path = Config/MDConfigManager.h; sourceTree = "<group>"; };
+		BCB4A93320E4C1D4009E4AF1 /* MDConfigManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MDConfigManager.m; path = Config/MDConfigManager.m; sourceTree = "<group>"; };
+		BCB4A93520E4C1D4009E4AF1 /* MDCycriptManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MDCycriptManager.h; path = Config/MDCycriptManager.h; sourceTree = "<group>"; };
+		BCB4A93720E4C1D4009E4AF1 /* MDCycriptManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MDCycriptManager.m; path = Config/MDCycriptManager.m; sourceTree = "<group>"; };
+		BCB4A93920E4C1D4009E4AF1 /* MDMethodTrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MDMethodTrace.h; path = Config/MDMethodTrace.h; sourceTree = "<group>"; };
+		BCB4A93B20E4C1D4009E4AF1 /* MDMethodTrace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MDMethodTrace.m; path = Config/MDMethodTrace.m; sourceTree = "<group>"; };
+		BCB4A93D20E4C1D4009E4AF1 /* ANYMethodLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ANYMethodLog.h; path = Config/ANYMethodLog.h; sourceTree = "<group>"; };
+		BCB4A93F20E4C1D4009E4AF1 /* ANYMethodLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ANYMethodLog.m; path = Config/ANYMethodLog.m; sourceTree = "<group>"; };
+		BCB4A94220E4C1D4009E4AF1 /* LLDBTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LLDBTools.h; path = Tools/LLDBTools.h; sourceTree = "<group>"; };
+		BCB4A94420E4C1D4009E4AF1 /* LLDBTools.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = LLDBTools.mm; path = Tools/LLDBTools.mm; sourceTree = "<group>"; };
+		BCB4A94720E4C1D4009E4AF1 /* PearDylib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PearDylib-Prefix.pch"; sourceTree = "<group>"; };
+		BCB4A94920E4C1D4009E4AF1 /* AntiAntiDebug.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AntiAntiDebug.m; path = AntiAntiDebug/AntiAntiDebug.m; sourceTree = "<group>"; };
+		BCB4A94C20E4C1D4009E4AF1 /* fishhook.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = fishhook.c; path = fishhook/fishhook.c; sourceTree = "<group>"; };
+		BCB4A94E20E4C1D4009E4AF1 /* fishhook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fishhook.h; path = fishhook/fishhook.h; sourceTree = "<group>"; };
+		BCB4A95020E4C1D4009E4AF1 /* PearDylib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PearDylib.h; sourceTree = "<group>"; };
+		BCB4A95220E4C1D4009E4AF1 /* PearDylib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PearDylib.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BCB4A90820E4C1D3009E4AF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCB4A91D20E4C1D4009E4AF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCB4A92620E4C1D4009E4AF1 /* JavaScriptCore.framework in Frameworks */,
+				BCB4A92A20E4C1D4009E4AF1 /* UIKit.framework in Frameworks */,
+				BCB4A92820E4C1D4009E4AF1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BCB4A90220E4C1D3009E4AF1 = {
+			isa = PBXGroup;
+			children = (
+				BCB4A91020E4C1D3009E4AF1 /* Pear */,
+				BCB4A92B20E4C1D4009E4AF1 /* PearDylib */,
+				BCB4A92420E4C1D4009E4AF1 /* Frameworks */,
+				BCB4A90F20E4C1D3009E4AF1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BCB4A90F20E4C1D3009E4AF1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BCB4A90E20E4C1D3009E4AF1 /* Pear.app */,
+				BCB4A92020E4C1D4009E4AF1 /* libPearDylib.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BCB4A91020E4C1D3009E4AF1 /* Pear */ = {
+			isa = PBXGroup;
+			children = (
+				BCB4A91120E4C1D3009E4AF1 /* icon.png */,
+				BCB4A91220E4C1D3009E4AF1 /* Target.plist */,
+				BCB4A91A20E4C1D3009E4AF1 /* Info.plist */,
+				BCB4A91320E4C1D3009E4AF1 /* Scripts */,
+				BCB4A91520E4C1D3009E4AF1 /* Config */,
+				BCB4A91820E4C1D3009E4AF1 /* TargetApp */,
+			);
+			path = Pear;
+			sourceTree = "<group>";
+		};
+		BCB4A91320E4C1D3009E4AF1 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				BCB4A91420E4C1D3009E4AF1 /* quick-resign.sh */,
+			);
+			name = Scripts;
+			sourceTree = "<group>";
+		};
+		BCB4A91520E4C1D3009E4AF1 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				BCB4A91620E4C1D3009E4AF1 /* MDConfig.plist */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		BCB4A91820E4C1D3009E4AF1 /* TargetApp */ = {
+			isa = PBXGroup;
+			children = (
+				BCB4A91920E4C1D3009E4AF1 /* put ipa or app here */,
+			);
+			name = TargetApp;
+			sourceTree = "<group>";
+		};
+		BCB4A92420E4C1D4009E4AF1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BCB4A92520E4C1D4009E4AF1 /* JavaScriptCore.framework */,
+				BCB4A92720E4C1D4009E4AF1 /* Foundation.framework */,
+				BCB4A92920E4C1D4009E4AF1 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BCB4A92B20E4C1D4009E4AF1 /* PearDylib */ = {
+			isa = PBXGroup;
+			children = (
+				BCB4A95020E4C1D4009E4AF1 /* PearDylib.h */,
+				BCB4A95220E4C1D4009E4AF1 /* PearDylib.m */,
+				BCB4A92C20E4C1D4009E4AF1 /* Logos */,
+				BCB4A93020E4C1D4009E4AF1 /* Config */,
+				BCB4A94120E4C1D4009E4AF1 /* Tools */,
+				BCB4A94820E4C1D4009E4AF1 /* AntiAntiDebug */,
+				BCB4A94B20E4C1D4009E4AF1 /* fishhook */,
+				BCB4A94620E4C1D4009E4AF1 /* Supporting Files */,
+			);
+			path = PearDylib;
+			sourceTree = "<group>";
+		};
+		BCB4A92C20E4C1D4009E4AF1 /* Logos */ = {
+			isa = PBXGroup;
+			children = (
+				BCB4A92D20E4C1D4009E4AF1 /* PearDylib.xm */,
+				BCB4A92E20E4C1D4009E4AF1 /* PearDylib.mm */,
+			);
+			name = Logos;
+			sourceTree = "<group>";
+		};
+		BCB4A93020E4C1D4009E4AF1 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				BCB4A93120E4C1D4009E4AF1 /* MDConfigManager.h */,
+				BCB4A93320E4C1D4009E4AF1 /* MDConfigManager.m */,
+				BCB4A93520E4C1D4009E4AF1 /* MDCycriptManager.h */,
+				BCB4A93720E4C1D4009E4AF1 /* MDCycriptManager.m */,
+				BCB4A93920E4C1D4009E4AF1 /* MDMethodTrace.h */,
+				BCB4A93B20E4C1D4009E4AF1 /* MDMethodTrace.m */,
+				BCB4A93D20E4C1D4009E4AF1 /* ANYMethodLog.h */,
+				BCB4A93F20E4C1D4009E4AF1 /* ANYMethodLog.m */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		BCB4A94120E4C1D4009E4AF1 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				BCB4A94220E4C1D4009E4AF1 /* LLDBTools.h */,
+				BCB4A94420E4C1D4009E4AF1 /* LLDBTools.mm */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
+		BCB4A94620E4C1D4009E4AF1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BCB4A94720E4C1D4009E4AF1 /* PearDylib-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BCB4A94820E4C1D4009E4AF1 /* AntiAntiDebug */ = {
+			isa = PBXGroup;
+			children = (
+				BCB4A94920E4C1D4009E4AF1 /* AntiAntiDebug.m */,
+			);
+			name = AntiAntiDebug;
+			sourceTree = "<group>";
+		};
+		BCB4A94B20E4C1D4009E4AF1 /* fishhook */ = {
+			isa = PBXGroup;
+			children = (
+				BCB4A94C20E4C1D4009E4AF1 /* fishhook.c */,
+				BCB4A94E20E4C1D4009E4AF1 /* fishhook.h */,
+			);
+			name = fishhook;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BCB4A91E20E4C1D4009E4AF1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCB4A93620E4C1D4009E4AF1 /* MDCycriptManager.h in Headers */,
+				BCB4A93A20E4C1D4009E4AF1 /* MDMethodTrace.h in Headers */,
+				BCB4A95120E4C1D4009E4AF1 /* PearDylib.h in Headers */,
+				BCB4A94320E4C1D4009E4AF1 /* LLDBTools.h in Headers */,
+				BCB4A93220E4C1D4009E4AF1 /* MDConfigManager.h in Headers */,
+				BCB4A93E20E4C1D4009E4AF1 /* ANYMethodLog.h in Headers */,
+				BCB4A94F20E4C1D4009E4AF1 /* fishhook.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BCB4A90D20E4C1D3009E4AF1 /* Pear */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCB4A95920E4C1D4009E4AF1 /* Build configuration list for PBXNativeTarget "Pear" */;
+			buildPhases = (
+				BCB4A90720E4C1D3009E4AF1 /* Sources */,
+				BCB4A90820E4C1D3009E4AF1 /* Frameworks */,
+				BCB4A90920E4C1D3009E4AF1 /* ShellScript */,
+				BCB4A90A20E4C1D3009E4AF1 /* Resources */,
+				BCB4A90B20E4C1D3009E4AF1 /* CopyFiles */,
+				BCB4A90C20E4C1D3009E4AF1 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BCB4A92320E4C1D4009E4AF1 /* PBXTargetDependency */,
+			);
+			name = Pear;
+			productName = Pear;
+			productReference = BCB4A90E20E4C1D3009E4AF1 /* Pear.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BCB4A91F20E4C1D4009E4AF1 /* PearDylib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCB4A95620E4C1D4009E4AF1 /* Build configuration list for PBXNativeTarget "PearDylib" */;
+			buildPhases = (
+				BCB4A91B20E4C1D4009E4AF1 /* ShellScript */,
+				BCB4A91C20E4C1D4009E4AF1 /* Sources */,
+				BCB4A91D20E4C1D4009E4AF1 /* Frameworks */,
+				BCB4A91E20E4C1D4009E4AF1 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PearDylib;
+			productName = PearDylib;
+			productReference = BCB4A92020E4C1D4009E4AF1 /* libPearDylib.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BCB4A90320E4C1D3009E4AF1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = dsjk;
+				TargetAttributes = {
+					BCB4A90D20E4C1D3009E4AF1 = {
+						CreatedOnToolsVersion = 9.3.1;
+					};
+					BCB4A91F20E4C1D4009E4AF1 = {
+						CreatedOnToolsVersion = 9.3.1;
+					};
+				};
+			};
+			buildConfigurationList = BCB4A90620E4C1D3009E4AF1 /* Build configuration list for PBXProject "Pear" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BCB4A90220E4C1D3009E4AF1;
+			productRefGroup = BCB4A90F20E4C1D3009E4AF1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BCB4A90D20E4C1D3009E4AF1 /* Pear */,
+				BCB4A91F20E4C1D4009E4AF1 /* PearDylib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BCB4A90A20E4C1D3009E4AF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCB4A91720E4C1D3009E4AF1 /* MDConfig.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BCB4A90920E4C1D3009E4AF1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = /opt/MonkeyDev/Tools/pack.sh;
+		};
+		BCB4A90C20E4C1D3009E4AF1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/MonkeyDev/Tools/pack.sh codesign";
+		};
+		BCB4A91B20E4C1D4009E4AF1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/MonkeyDev/bin/md --xcbp-logos";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BCB4A90720E4C1D3009E4AF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCB4A91C20E4C1D4009E4AF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCB4A93820E4C1D4009E4AF1 /* MDCycriptManager.m in Sources */,
+				BCB4A94020E4C1D4009E4AF1 /* ANYMethodLog.m in Sources */,
+				BCB4A93420E4C1D4009E4AF1 /* MDConfigManager.m in Sources */,
+				BCB4A94520E4C1D4009E4AF1 /* LLDBTools.mm in Sources */,
+				BCB4A92F20E4C1D4009E4AF1 /* PearDylib.mm in Sources */,
+				BCB4A93C20E4C1D4009E4AF1 /* MDMethodTrace.m in Sources */,
+				BCB4A94D20E4C1D4009E4AF1 /* fishhook.c in Sources */,
+				BCB4A94A20E4C1D4009E4AF1 /* AntiAntiDebug.m in Sources */,
+				BCB4A95320E4C1D4009E4AF1 /* PearDylib.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BCB4A92320E4C1D4009E4AF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCB4A91F20E4C1D4009E4AF1 /* PearDylib */;
+			targetProxy = BCB4A92220E4C1D4009E4AF1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BCB4A95420E4C1D4009E4AF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BCB4A95520E4C1D4009E4AF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BCB4A95720E4C1D4009E4AF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 86NRYD9S7M;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/Frameworks/**",
+					"$(MonkeyDevPath)/Librarys/**",
+					"$(MonkeyDevTheosPath)/vendor/lib",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PearDylib/PearDylib-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/include",
+					"$(MonkeyDevTheosPath)/vendor/include/**",
+				);
+				INSTALL_PATH = "@executable_path/Frameworks/libPearDylib.dylib";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/Frameworks",
+					"$(MonkeyDevTheosPath)/vendor/lib/**",
+				);
+				MonkeyDevPath = /opt/MonkeyDev;
+				MonkeyDevTheosPath = /opt/theos;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-DTHEOS_INSTANCE_NAME=\"\\\"PearDylib\\\"\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-weak_library",
+					"/usr/lib/libc++.dylib",
+					"-weak_library",
+					"/usr/lib/libstdc++.dylib",
+					"-weak_library",
+					"$(MonkeyDevPath)/Frameworks/libsubstrate.dylib",
+					"-lcycript",
+					"-framework",
+					RevealServer,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		BCB4A95820E4C1D4009E4AF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = 86NRYD9S7M;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/Frameworks/**",
+					"$(MonkeyDevPath)/Librarys/**",
+					"$(MonkeyDevTheosPath)/vendor/lib",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PearDylib/PearDylib-Prefix.pch";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/include",
+					"$(MonkeyDevTheosPath)/vendor/include/**",
+				);
+				INSTALL_PATH = "@executable_path/Frameworks/libPearDylib.dylib";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/Frameworks",
+					"$(MonkeyDevTheosPath)/vendor/lib/**",
+				);
+				MonkeyDevPath = /opt/MonkeyDev;
+				MonkeyDevTheosPath = /opt/theos;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-DTHEOS_INSTANCE_NAME=\"\\\"PearDylib\\\"\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-weak_library",
+					"/usr/lib/libc++.dylib",
+					"-weak_library",
+					"/usr/lib/libstdc++.dylib",
+					"-weak_library",
+					"$(MonkeyDevPath)/Frameworks/libsubstrate.dylib",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BCB4A95A20E4C1D4009E4AF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 86NRYD9S7M;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = Pear/Info.plist;
+				MONKEYDEV_ADD_SUBSTRATE = YES;
+				MONKEYDEV_CLASS_DUMP = NO;
+				MONKEYDEV_INSERT_DYLIB = YES;
+				MONKEYDEV_RESTORE_SYMBOL = NO;
+				MONKEYDEV_TARGET_APP = Optional;
+				PODS_CONFIGURATION_BUILD_DIR = "$BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				PODS_ROOT = "${SRCROOT}/Pods";
+				PRODUCT_BUNDLE_IDENTIFIER = zlgx.Pear;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BCB4A95B20E4C1D4009E4AF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 86NRYD9S7M;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = Pear/Info.plist;
+				MONKEYDEV_ADD_SUBSTRATE = YES;
+				MONKEYDEV_CLASS_DUMP = NO;
+				MONKEYDEV_INSERT_DYLIB = YES;
+				MONKEYDEV_RESTORE_SYMBOL = NO;
+				MONKEYDEV_TARGET_APP = Optional;
+				PODS_CONFIGURATION_BUILD_DIR = "$BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				PODS_ROOT = "${SRCROOT}/Pods";
+				PRODUCT_BUNDLE_IDENTIFIER = zlgx.Pear;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BCB4A90620E4C1D3009E4AF1 /* Build configuration list for PBXProject "Pear" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCB4A95420E4C1D4009E4AF1 /* Debug */,
+				BCB4A95520E4C1D4009E4AF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCB4A95620E4C1D4009E4AF1 /* Build configuration list for PBXNativeTarget "PearDylib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCB4A95720E4C1D4009E4AF1 /* Debug */,
+				BCB4A95820E4C1D4009E4AF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCB4A95920E4C1D4009E4AF1 /* Build configuration list for PBXNativeTarget "Pear" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCB4A95A20E4C1D4009E4AF1 /* Debug */,
+				BCB4A95B20E4C1D4009E4AF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BCB4A90320E4C1D3009E4AF1 /* Project object */;
+}
