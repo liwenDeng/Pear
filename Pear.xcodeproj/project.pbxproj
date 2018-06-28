@@ -28,6 +28,10 @@
 		BCB4A94F20E4C1D4009E4AF1 /* fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = BCB4A94E20E4C1D4009E4AF1 /* fishhook.h */; };
 		BCB4A95120E4C1D4009E4AF1 /* PearDylib.h in Headers */ = {isa = PBXBuildFile; fileRef = BCB4A95020E4C1D4009E4AF1 /* PearDylib.h */; };
 		BCB4A95320E4C1D4009E4AF1 /* PearDylib.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB4A95220E4C1D4009E4AF1 /* PearDylib.m */; };
+		BCB4A95E20E4C252009E4AF1 /* NSString+ParseUrl.h in Headers */ = {isa = PBXBuildFile; fileRef = BCB4A95C20E4C252009E4AF1 /* NSString+ParseUrl.h */; };
+		BCB4A95F20E4C252009E4AF1 /* NSString+ParseUrl.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB4A95D20E4C252009E4AF1 /* NSString+ParseUrl.m */; };
+		BCB4A96120E4C2BC009E4AF1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB4A96020E4C2BC009E4AF1 /* AVFoundation.framework */; };
+		BCB4A96320E4C2C5009E4AF1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB4A96220E4C2C5009E4AF1 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +69,7 @@
 		BCB4A92520E4C1D4009E4AF1 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		BCB4A92720E4C1D4009E4AF1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BCB4A92920E4C1D4009E4AF1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		BCB4A92D20E4C1D4009E4AF1 /* PearDylib.xm */ = {isa = PBXFileReference; lastKnownFileType = text; name = PearDylib.xm; path = Logos/PearDylib.xm; sourceTree = "<group>"; };
+		BCB4A92D20E4C1D4009E4AF1 /* PearDylib.xm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = PearDylib.xm; path = Logos/PearDylib.xm; sourceTree = "<group>"; };
 		BCB4A92E20E4C1D4009E4AF1 /* PearDylib.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = PearDylib.mm; path = Logos/PearDylib.mm; sourceTree = "<group>"; };
 		BCB4A93120E4C1D4009E4AF1 /* MDConfigManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MDConfigManager.h; path = Config/MDConfigManager.h; sourceTree = "<group>"; };
 		BCB4A93320E4C1D4009E4AF1 /* MDConfigManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MDConfigManager.m; path = Config/MDConfigManager.m; sourceTree = "<group>"; };
@@ -83,6 +87,10 @@
 		BCB4A94E20E4C1D4009E4AF1 /* fishhook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fishhook.h; path = fishhook/fishhook.h; sourceTree = "<group>"; };
 		BCB4A95020E4C1D4009E4AF1 /* PearDylib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PearDylib.h; sourceTree = "<group>"; };
 		BCB4A95220E4C1D4009E4AF1 /* PearDylib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PearDylib.m; sourceTree = "<group>"; };
+		BCB4A95C20E4C252009E4AF1 /* NSString+ParseUrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ParseUrl.h"; sourceTree = "<group>"; };
+		BCB4A95D20E4C252009E4AF1 /* NSString+ParseUrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ParseUrl.m"; sourceTree = "<group>"; };
+		BCB4A96020E4C2BC009E4AF1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BCB4A96220E4C2C5009E4AF1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCB4A96320E4C2C5009E4AF1 /* MediaPlayer.framework in Frameworks */,
+				BCB4A96120E4C2BC009E4AF1 /* AVFoundation.framework in Frameworks */,
 				BCB4A92620E4C1D4009E4AF1 /* JavaScriptCore.framework in Frameworks */,
 				BCB4A92A20E4C1D4009E4AF1 /* UIKit.framework in Frameworks */,
 				BCB4A92820E4C1D4009E4AF1 /* Foundation.framework in Frameworks */,
@@ -165,6 +175,8 @@
 		BCB4A92420E4C1D4009E4AF1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCB4A96220E4C2C5009E4AF1 /* MediaPlayer.framework */,
+				BCB4A96020E4C2BC009E4AF1 /* AVFoundation.framework */,
 				BCB4A92520E4C1D4009E4AF1 /* JavaScriptCore.framework */,
 				BCB4A92720E4C1D4009E4AF1 /* Foundation.framework */,
 				BCB4A92920E4C1D4009E4AF1 /* UIKit.framework */,
@@ -192,6 +204,8 @@
 			children = (
 				BCB4A92D20E4C1D4009E4AF1 /* PearDylib.xm */,
 				BCB4A92E20E4C1D4009E4AF1 /* PearDylib.mm */,
+				BCB4A95C20E4C252009E4AF1 /* NSString+ParseUrl.h */,
+				BCB4A95D20E4C252009E4AF1 /* NSString+ParseUrl.m */,
 			);
 			name = Logos;
 			sourceTree = "<group>";
@@ -254,6 +268,7 @@
 			files = (
 				BCB4A93620E4C1D4009E4AF1 /* MDCycriptManager.h in Headers */,
 				BCB4A93A20E4C1D4009E4AF1 /* MDMethodTrace.h in Headers */,
+				BCB4A95E20E4C252009E4AF1 /* NSString+ParseUrl.h in Headers */,
 				BCB4A95120E4C1D4009E4AF1 /* PearDylib.h in Headers */,
 				BCB4A94320E4C1D4009E4AF1 /* LLDBTools.h in Headers */,
 				BCB4A93220E4C1D4009E4AF1 /* MDConfigManager.h in Headers */,
@@ -405,6 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCB4A93820E4C1D4009E4AF1 /* MDCycriptManager.m in Sources */,
+				BCB4A95F20E4C252009E4AF1 /* NSString+ParseUrl.m in Sources */,
 				BCB4A94020E4C1D4009E4AF1 /* ANYMethodLog.m in Sources */,
 				BCB4A93420E4C1D4009E4AF1 /* MDConfigManager.m in Sources */,
 				BCB4A94520E4C1D4009E4AF1 /* LLDBTools.mm in Sources */,
@@ -659,7 +675,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 86NRYD9S7M;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Pear/Info.plist;
 				MONKEYDEV_ADD_SUBSTRATE = YES;
@@ -669,7 +685,7 @@
 				MONKEYDEV_TARGET_APP = Optional;
 				PODS_CONFIGURATION_BUILD_DIR = "$BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				PODS_ROOT = "${SRCROOT}/Pods";
-				PRODUCT_BUNDLE_IDENTIFIER = zlgx.Pear;
+				PRODUCT_BUNDLE_IDENTIFIER = aaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -679,7 +695,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 86NRYD9S7M;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Pear/Info.plist;
 				MONKEYDEV_ADD_SUBSTRATE = YES;
@@ -689,7 +705,7 @@
 				MONKEYDEV_TARGET_APP = Optional;
 				PODS_CONFIGURATION_BUILD_DIR = "$BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				PODS_ROOT = "${SRCROOT}/Pods";
-				PRODUCT_BUNDLE_IDENTIFIER = zlgx.Pear;
+				PRODUCT_BUNDLE_IDENTIFIER = aaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
