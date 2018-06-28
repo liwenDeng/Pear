@@ -91,6 +91,7 @@
 		BCB4A95D20E4C252009E4AF1 /* NSString+ParseUrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ParseUrl.m"; sourceTree = "<group>"; };
 		BCB4A96020E4C2BC009E4AF1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BCB4A96220E4C2C5009E4AF1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		BCB4A96820E4D4E0009E4AF1 /* pear1.0.5.ipa */ = {isa = PBXFileReference; lastKnownFileType = file; name = pear1.0.5.ipa; path = TargetApp/pear1.0.5.ipa; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				BCB4A91920E4C1D3009E4AF1 /* put ipa or app here */,
+				BCB4A96820E4D4E0009E4AF1 /* pear1.0.5.ipa */,
 			);
 			name = TargetApp;
 			sourceTree = "<group>";
@@ -675,7 +677,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 86NRYD9S7M;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Pear/Info.plist;
 				MONKEYDEV_ADD_SUBSTRATE = YES;
@@ -695,7 +697,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 86NRYD9S7M;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Pear/Info.plist;
 				MONKEYDEV_ADD_SUBSTRATE = YES;

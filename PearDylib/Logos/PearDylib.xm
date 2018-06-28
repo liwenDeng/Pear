@@ -1,5 +1,3 @@
-// See http://iphonedevwiki.net/index.php/Logos
-
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 #import <WebKit/WebKit.h>
@@ -145,5 +143,4 @@ UITextView *textView = nil;
     }
 }
 %end
-
 
