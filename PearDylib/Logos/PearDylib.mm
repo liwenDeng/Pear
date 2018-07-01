@@ -46,11 +46,6 @@ static WKWebView* _logos_method$_ungrouped$WKWebView$initWithFrame$configuration
     webView = instance;
     NSLog(@"hook wkWebViewInit");
     
-    CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    textView = [[UITextView alloc]initWithFrame:CGRectMake(100, 0, width / 2, 100)];
-    [self addSubview:textView];
-    textView.backgroundColor = [UIColor clearColor];
-    
     UIButton *swi = [UIButton buttonWithType:(UIButtonTypeSystem)];
     [swi setTitle:@"播放" forState:(UIControlStateNormal)];
     [swi setTitleColor:[UIColor redColor] forState:(UIControlStateNormal)];
@@ -120,7 +115,26 @@ static void _logos_method$_ungrouped$WKWebView$sendRequest$(_LOGOS_SELF_TYPE_NOR
                 if (list.count > 0) {
                     NSDictionary *dic = list.firstObject;
                     NSString *videoUrl = dic[@"url"];
-                    [self playWithVidelUrl:videoUrl];
+                    
+                    NSString *m3u8VideoUrl = @"";
+                    NSString *mp4VideoUrl = @"";
+                    
+                    if([type isEqualToString:@"1"]) {
+                        mp4VideoUrl = videoUrl;
+                    } else{
+                        m3u8VideoUrl = videoUrl;
+                    }
+                    
+                    NSMutableDictionary *outDic = [NSMutableDictionary dictionary];
+                    outDic[@"movieId"] = responseDict[@"mov"];
+                    outDic[@"name"] = responseDict[@"name"];
+                    outDic[@"thumbnail"] = responseDict[@"thumbnail"];
+                    outDic[@"mp4VideoUrl"] = mp4VideoUrl;
+                    outDic[@"m3u8VideoUrl"] = m3u8VideoUrl;
+                    NSString *paramString = [[outDic chx_URLParameterString] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                    NSString *openUrlString =  [NSString stringWithFormat:@"hgplayer://www.hgplayer.com/play?%@",paramString];
+                    NSURL *openUrl = [NSURL URLWithString:openUrlString];
+                    [[UIApplication sharedApplication] openURL:openUrl];
                 }
             }
         });
@@ -172,4 +186,4 @@ static void _logos_method$_ungrouped$WKWebView$handlePan$(_LOGOS_SELF_TYPE_NORMA
 
 static __attribute__((constructor)) void _logosLocalInit() {
 {Class _logos_class$_ungrouped$WKWebView = objc_getClass("WKWebView"); MSHookMessageEx(_logos_class$_ungrouped$WKWebView, @selector(initWithFrame:configuration:), (IMP)&_logos_method$_ungrouped$WKWebView$initWithFrame$configuration$, (IMP*)&_logos_orig$_ungrouped$WKWebView$initWithFrame$configuration$);{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; memcpy(_typeEncoding + i, @encode(NSString *), strlen(@encode(NSString *))); i += strlen(@encode(NSString *)); _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$WKWebView, @selector(playWithVidelUrl:), (IMP)&_logos_method$_ungrouped$WKWebView$playWithVidelUrl$, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$WKWebView, @selector(choosePlayType), (IMP)&_logos_method$_ungrouped$WKWebView$choosePlayType, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; memcpy(_typeEncoding + i, @encode(NSString *), strlen(@encode(NSString *))); i += strlen(@encode(NSString *)); _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$WKWebView, @selector(sendRequest:), (IMP)&_logos_method$_ungrouped$WKWebView$sendRequest$, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; memcpy(_typeEncoding + i, @encode(UIButton*), strlen(@encode(UIButton*))); i += strlen(@encode(UIButton*)); _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$WKWebView, @selector(playButtonClicked:), (IMP)&_logos_method$_ungrouped$WKWebView$playButtonClicked$, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; memcpy(_typeEncoding + i, @encode(UIPanGestureRecognizer*), strlen(@encode(UIPanGestureRecognizer*))); i += strlen(@encode(UIPanGestureRecognizer*)); _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$WKWebView, @selector(handlePan:), (IMP)&_logos_method$_ungrouped$WKWebView$handlePan$, _typeEncoding); }} }
-#line 147 "/Users/dengliwen/Documents/Pear/PearDylib/Logos/PearDylib.xm"
+#line 161 "/Users/dengliwen/Documents/Pear/PearDylib/Logos/PearDylib.xm"

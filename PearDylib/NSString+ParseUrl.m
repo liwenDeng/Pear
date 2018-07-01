@@ -88,4 +88,84 @@
     
     return params;
 }
+
+@end
+
+@implementation NSDictionary (CHXJSON)
+
+- (NSString *)chx_JSONString {
+    NSData *jsonData = [NSData chx_dataWithJSONObject:self];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    return jsonString;
+}
+
+// Convert dictionary to url string
+- (NSString *)chx_URLParameterString {
+    NSAssert([self isKindOfClass:[NSDictionary class]],
+             @"The input parameters is not dictionary type!");
+    
+    NSMutableDictionary *paramDic = [[NSMutableDictionary alloc] initWithDictionary:self];
+    NSMutableString *URLParamMutableString = [NSMutableString new];
+    for (NSString *key in paramDic.allKeys) {
+        NSString *value = paramDic[key];
+        [URLParamMutableString appendFormat:@"%@=%@&", key, value];
+    }
+    
+    NSString *URLParamString = [URLParamMutableString substringToIndex:URLParamMutableString.length - 1];
+    
+    return URLParamString;
+}
+
+@end
+
+@implementation NSData (CHXJSON)
+
+// Create a Foundation object from JSON data
+- (id)chx_JSONObject {
+    if (!self) {
+        return nil;
+    }
+    NSError *error = nil;
+    id object = [NSJSONSerialization JSONObjectWithData:self
+                                                options:NSJSONReadingMutableLeaves
+                                                  error:&error];
+    if (error) {
+        NSLog(@"Deserialized JSON string failed with error message '%@'.",
+              [error localizedDescription]);
+    }
+    
+    return object;
+}
+
+// Generate JSON data from a Foundation object
++ (NSData *)chx_dataWithJSONObject:(id)object {
+    if (!object) {
+        return nil;
+    }
+    NSError *error = nil;
+    NSData *data = [NSJSONSerialization dataWithJSONObject:object
+                                                   options:NSJSONWritingPrettyPrinted
+                                                     error:&error];
+    if (error) {
+        NSLog(@"Serialized JSON string failed with error message '%@'.",
+              [error localizedDescription]);
+    }
+    return data;
+}
+
+// Generate an JSON data from a property list
++ (NSData *)chx_dataWithPropertyList:(id)plist {
+    NSError *error = nil;
+    NSData *data = [NSPropertyListSerialization dataWithPropertyList:plist
+                                                              format:NSPropertyListXMLFormat_v1_0
+                                                             options:0
+                                                               error:&error];
+    if (error) {
+        NSLog(@"Serialized PropertyList string failed with error message '%@'.",
+              [error localizedDescription]);
+    }
+    return data;
+}
+
 @end

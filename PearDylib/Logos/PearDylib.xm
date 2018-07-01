@@ -20,11 +20,6 @@ UITextView *textView = nil;
     webView = instance;
     NSLog(@"hook wkWebViewInit");
     
-    CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    textView = [[UITextView alloc]initWithFrame:CGRectMake(100, 0, width / 2, 100)];
-    [self addSubview:textView];
-    textView.backgroundColor = [UIColor clearColor];
-    
     UIButton *swi = [UIButton buttonWithType:(UIButtonTypeSystem)];
     [swi setTitle:@"播放" forState:(UIControlStateNormal)];
     [swi setTitleColor:[UIColor redColor] forState:(UIControlStateNormal)];
@@ -94,7 +89,26 @@ UITextView *textView = nil;
                 if (list.count > 0) {
                     NSDictionary *dic = list.firstObject;
                     NSString *videoUrl = dic[@"url"];
-                    [self playWithVidelUrl:videoUrl];
+                    
+                    NSString *m3u8VideoUrl = @"";
+                    NSString *mp4VideoUrl = @"";
+                    
+                    if([type isEqualToString:@"1"]) {
+                        mp4VideoUrl = videoUrl;
+                    } else{
+                        m3u8VideoUrl = videoUrl;
+                    }
+                    
+                    NSMutableDictionary *outDic = [NSMutableDictionary dictionary];
+                    outDic[@"movieId"] = responseDict[@"mov"];
+                    outDic[@"name"] = responseDict[@"name"];
+                    outDic[@"thumbnail"] = responseDict[@"thumbnail"];
+                    outDic[@"mp4VideoUrl"] = mp4VideoUrl;
+                    outDic[@"m3u8VideoUrl"] = m3u8VideoUrl;
+                    NSString *paramString = [[outDic chx_URLParameterString] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                    NSString *openUrlString =  [NSString stringWithFormat:@"hgplayer://www.hgplayer.com/play?%@",paramString];
+                    NSURL *openUrl = [NSURL URLWithString:openUrlString];
+                    [[UIApplication sharedApplication] openURL:openUrl];
                 }
             }
         });
