@@ -7,11 +7,13 @@
 
 WKWebView *webView = nil;
 UITextView *textView = nil;
+NSDictionary *dicCookies = nil;
 
 @interface WKWebView ()
 - (void)playWithVidelUrl:(NSString *)videoUrl;
 - (void)choosePlayType ;
 - (void)sendRequest:(NSString *)type;
+- (void)loadVideo:(NSString *)type movieId:(NSString *)movieId dicCookies:(NSDictionary *)dicCookies;
 @end
 
 
@@ -36,9 +38,9 @@ UITextView *textView = nil;
 #endif
 
 @class WKWebView; 
-static WKWebView* (*_logos_orig$_ungrouped$WKWebView$initWithFrame$configuration$)(_LOGOS_SELF_TYPE_INIT WKWebView*, SEL, CGRect, WKWebViewConfiguration *) _LOGOS_RETURN_RETAINED; static WKWebView* _logos_method$_ungrouped$WKWebView$initWithFrame$configuration$(_LOGOS_SELF_TYPE_INIT WKWebView*, SEL, CGRect, WKWebViewConfiguration *) _LOGOS_RETURN_RETAINED; static void _logos_method$_ungrouped$WKWebView$playWithVidelUrl$(_LOGOS_SELF_TYPE_NORMAL WKWebView* _LOGOS_SELF_CONST, SEL, NSString *); static void _logos_method$_ungrouped$WKWebView$choosePlayType(_LOGOS_SELF_TYPE_NORMAL WKWebView* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$WKWebView$sendRequest$(_LOGOS_SELF_TYPE_NORMAL WKWebView* _LOGOS_SELF_CONST, SEL, NSString *); static void _logos_method$_ungrouped$WKWebView$playButtonClicked$(_LOGOS_SELF_TYPE_NORMAL WKWebView* _LOGOS_SELF_CONST, SEL, UIButton*); static void _logos_method$_ungrouped$WKWebView$handlePan$(_LOGOS_SELF_TYPE_NORMAL WKWebView* _LOGOS_SELF_CONST, SEL, UIPanGestureRecognizer*); 
+static WKWebView* (*_logos_orig$_ungrouped$WKWebView$initWithFrame$configuration$)(_LOGOS_SELF_TYPE_INIT WKWebView*, SEL, CGRect, WKWebViewConfiguration *) _LOGOS_RETURN_RETAINED; static WKWebView* _logos_method$_ungrouped$WKWebView$initWithFrame$configuration$(_LOGOS_SELF_TYPE_INIT WKWebView*, SEL, CGRect, WKWebViewConfiguration *) _LOGOS_RETURN_RETAINED; static void _logos_method$_ungrouped$WKWebView$playWithVidelUrl$(_LOGOS_SELF_TYPE_NORMAL WKWebView* _LOGOS_SELF_CONST, SEL, NSString *); static void _logos_method$_ungrouped$WKWebView$choosePlayType(_LOGOS_SELF_TYPE_NORMAL WKWebView* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$WKWebView$sendRequest$(_LOGOS_SELF_TYPE_NORMAL WKWebView* _LOGOS_SELF_CONST, SEL, NSString *); static void _logos_method$_ungrouped$WKWebView$loadVideo$movieId$dicCookies$(_LOGOS_SELF_TYPE_NORMAL WKWebView* _LOGOS_SELF_CONST, SEL, NSString *, NSString *, NSDictionary *); static void _logos_method$_ungrouped$WKWebView$playButtonClicked$(_LOGOS_SELF_TYPE_NORMAL WKWebView* _LOGOS_SELF_CONST, SEL, UIButton*); static void _logos_method$_ungrouped$WKWebView$handlePan$(_LOGOS_SELF_TYPE_NORMAL WKWebView* _LOGOS_SELF_CONST, SEL, UIPanGestureRecognizer*); 
 
-#line 16 "/Users/dengliwen/Documents/Pear/PearDylib/Logos/PearDylib.xm"
+#line 18 "/Users/dengliwen/Documents/Pear/PearDylib/Logos/PearDylib.xm"
 
 
 static WKWebView* _logos_method$_ungrouped$WKWebView$initWithFrame$configuration$(_LOGOS_SELF_TYPE_INIT WKWebView* __unused self, SEL __unused _cmd, CGRect frame, WKWebViewConfiguration * configuration) _LOGOS_RETURN_RETAINED {
@@ -87,9 +89,11 @@ static void _logos_method$_ungrouped$WKWebView$choosePlayType(_LOGOS_SELF_TYPE_N
 
 
 static void _logos_method$_ungrouped$WKWebView$sendRequest$(_LOGOS_SELF_TYPE_NORMAL WKWebView* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd, NSString * type) {
+    
     NSString *absoluteString = self.URL.absoluteString;
     NSString *movieId = [absoluteString bd_getURLParameters][@"id"];
     
+
     NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     for (NSHTTPCookie *cookie in cookieStorage.cookies) {
         NSLog(@"key:%@, value:%@",cookie.name, cookie.value);
@@ -97,7 +101,89 @@ static void _logos_method$_ungrouped$WKWebView$sendRequest$(_LOGOS_SELF_TYPE_NOR
     
     NSDictionary *dicCookies = [NSHTTPCookie requestHeaderFieldsWithCookies:cookieStorage.cookies];
     
-    NSString *urlString = [NSString stringWithFormat:@"https://m.pear2.org/api/movieplay/GetMovieCloud/%@?onlyCzn=%@",movieId,type];
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+    NSString *urlString = [NSString stringWithFormat:@"https://d.pear2.me/api/movieplay/GetMovieCloud/%@?onlyCzn=%@",movieId,type];
+    
+
+
+    NSURL *URL = [NSURL URLWithString:urlString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+    
+    [request setValue:[dicCookies objectForKey:@"Cookie"] forHTTPHeaderField:@"Cookie"];
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                NSLog(@"请求失败");
+            } else {
+                NSDictionary * responseDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                NSLog(@"%@",responseDict);
+                NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                NSLog(@"jsonString:%@",jsonString);
+                NSString *js = [NSString stringWithFormat:@"window.webkit.messageHandlers.play.postMessage('%@')", jsonString];
+                NSLog(@"js:%@",js);
+                [self evaluateJavaScript:js completionHandler:nil];
+                return ;
+                NSArray *list = responseDict[@"resolution"];
+                if (list.count > 0) {
+                    NSDictionary *dic = list.firstObject;
+                    NSString *videoUrl = dic[@"url"];
+
+                    NSString *m3u8VideoUrl = @"";
+                    NSString *mp4VideoUrl = @"";
+
+                    if([type isEqualToString:@"1"]) {
+                        mp4VideoUrl = videoUrl;
+                    } else{
+                        m3u8VideoUrl = videoUrl;
+                    }
+
+                    NSMutableDictionary *outDic = [NSMutableDictionary dictionary];
+                    outDic[@"movieId"] = responseDict[@"mov"];
+                    outDic[@"name"] = responseDict[@"name"];
+                    outDic[@"thumbnail"] = responseDict[@"thumbnail"];
+                    outDic[@"mp4VideoUrl"] = mp4VideoUrl;
+                    outDic[@"m3u8VideoUrl"] = m3u8VideoUrl;
+                    NSString *paramString = [[outDic chx_URLParameterString] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                    NSString *openUrlString =  [NSString stringWithFormat:@"hgplayer://www.hgplayer.com/play?%@",paramString];
+                    NSURL *openUrl = [NSURL URLWithString:openUrlString];
+                    [[UIApplication sharedApplication] openURL:openUrl];
+                    
+                    
+                }
+            }
+        });
+    }];
+    
+    [dataTask resume];
+}
+
+
+static void _logos_method$_ungrouped$WKWebView$loadVideo$movieId$dicCookies$(_LOGOS_SELF_TYPE_NORMAL WKWebView* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd, NSString * type, NSString * movieId, NSDictionary * dicCookies){
+    
+    NSString *urlString = [NSString stringWithFormat:@"https://d.pear2.org/api/movieplay/GetMovieCloud/%@?onlyCzn=%@",movieId,type];
     NSURL *URL = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
     
@@ -185,5 +271,5 @@ static void _logos_method$_ungrouped$WKWebView$handlePan$(_LOGOS_SELF_TYPE_NORMA
 
 
 static __attribute__((constructor)) void _logosLocalInit() {
-{Class _logos_class$_ungrouped$WKWebView = objc_getClass("WKWebView"); MSHookMessageEx(_logos_class$_ungrouped$WKWebView, @selector(initWithFrame:configuration:), (IMP)&_logos_method$_ungrouped$WKWebView$initWithFrame$configuration$, (IMP*)&_logos_orig$_ungrouped$WKWebView$initWithFrame$configuration$);{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; memcpy(_typeEncoding + i, @encode(NSString *), strlen(@encode(NSString *))); i += strlen(@encode(NSString *)); _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$WKWebView, @selector(playWithVidelUrl:), (IMP)&_logos_method$_ungrouped$WKWebView$playWithVidelUrl$, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$WKWebView, @selector(choosePlayType), (IMP)&_logos_method$_ungrouped$WKWebView$choosePlayType, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; memcpy(_typeEncoding + i, @encode(NSString *), strlen(@encode(NSString *))); i += strlen(@encode(NSString *)); _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$WKWebView, @selector(sendRequest:), (IMP)&_logos_method$_ungrouped$WKWebView$sendRequest$, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; memcpy(_typeEncoding + i, @encode(UIButton*), strlen(@encode(UIButton*))); i += strlen(@encode(UIButton*)); _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$WKWebView, @selector(playButtonClicked:), (IMP)&_logos_method$_ungrouped$WKWebView$playButtonClicked$, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; memcpy(_typeEncoding + i, @encode(UIPanGestureRecognizer*), strlen(@encode(UIPanGestureRecognizer*))); i += strlen(@encode(UIPanGestureRecognizer*)); _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$WKWebView, @selector(handlePan:), (IMP)&_logos_method$_ungrouped$WKWebView$handlePan$, _typeEncoding); }} }
-#line 161 "/Users/dengliwen/Documents/Pear/PearDylib/Logos/PearDylib.xm"
+{Class _logos_class$_ungrouped$WKWebView = objc_getClass("WKWebView"); MSHookMessageEx(_logos_class$_ungrouped$WKWebView, @selector(initWithFrame:configuration:), (IMP)&_logos_method$_ungrouped$WKWebView$initWithFrame$configuration$, (IMP*)&_logos_orig$_ungrouped$WKWebView$initWithFrame$configuration$);{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; memcpy(_typeEncoding + i, @encode(NSString *), strlen(@encode(NSString *))); i += strlen(@encode(NSString *)); _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$WKWebView, @selector(playWithVidelUrl:), (IMP)&_logos_method$_ungrouped$WKWebView$playWithVidelUrl$, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$WKWebView, @selector(choosePlayType), (IMP)&_logos_method$_ungrouped$WKWebView$choosePlayType, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; memcpy(_typeEncoding + i, @encode(NSString *), strlen(@encode(NSString *))); i += strlen(@encode(NSString *)); _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$WKWebView, @selector(sendRequest:), (IMP)&_logos_method$_ungrouped$WKWebView$sendRequest$, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; memcpy(_typeEncoding + i, @encode(NSString *), strlen(@encode(NSString *))); i += strlen(@encode(NSString *)); memcpy(_typeEncoding + i, @encode(NSString *), strlen(@encode(NSString *))); i += strlen(@encode(NSString *)); memcpy(_typeEncoding + i, @encode(NSDictionary *), strlen(@encode(NSDictionary *))); i += strlen(@encode(NSDictionary *)); _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$WKWebView, @selector(loadVideo:movieId:dicCookies:), (IMP)&_logos_method$_ungrouped$WKWebView$loadVideo$movieId$dicCookies$, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; memcpy(_typeEncoding + i, @encode(UIButton*), strlen(@encode(UIButton*))); i += strlen(@encode(UIButton*)); _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$WKWebView, @selector(playButtonClicked:), (IMP)&_logos_method$_ungrouped$WKWebView$playButtonClicked$, _typeEncoding); }{ char _typeEncoding[1024]; unsigned int i = 0; _typeEncoding[i] = 'v'; i += 1; _typeEncoding[i] = '@'; i += 1; _typeEncoding[i] = ':'; i += 1; memcpy(_typeEncoding + i, @encode(UIPanGestureRecognizer*), strlen(@encode(UIPanGestureRecognizer*))); i += strlen(@encode(UIPanGestureRecognizer*)); _typeEncoding[i] = '\0'; class_addMethod(_logos_class$_ungrouped$WKWebView, @selector(handlePan:), (IMP)&_logos_method$_ungrouped$WKWebView$handlePan$, _typeEncoding); }} }
+#line 247 "/Users/dengliwen/Documents/Pear/PearDylib/Logos/PearDylib.xm"

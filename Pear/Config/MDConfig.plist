@@ -5,10 +5,12 @@
 	<key>MethodTrace</key>
 	<dict>
 		<key>ENABLE</key>
-		<false/>
+		<true/>
 		<key>CLASS_LIST</key>
 		<dict>
 			<key>BaseMsgContentViewController</key>
+			<string></string>
+			<key>LiveShowViewController</key>
 			<string></string>
 			<key>CMessageMgr</key>
 			<array>

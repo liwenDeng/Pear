@@ -6,11 +6,13 @@
 
 WKWebView *webView = nil;
 UITextView *textView = nil;
+NSDictionary *dicCookies = nil;
 
 @interface WKWebView ()
 - (void)playWithVidelUrl:(NSString *)videoUrl;
 - (void)choosePlayType ;
 - (void)sendRequest:(NSString *)type;
+- (void)loadVideo:(NSString *)type movieId:(NSString *)movieId dicCookies:(NSDictionary *)dicCookies;
 @end
 
 %hook WKWebView
@@ -61,17 +63,99 @@ UITextView *textView = nil;
 
 %new
 - (void)sendRequest:(NSString *)type {
+    
     NSString *absoluteString = self.URL.absoluteString;
     NSString *movieId = [absoluteString bd_getURLParameters][@"id"];
     
+//     old cookies getter
     NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     for (NSHTTPCookie *cookie in cookieStorage.cookies) {
         NSLog(@"key:%@, value:%@",cookie.name, cookie.value);
     }
     // cookies转为字典
     NSDictionary *dicCookies = [NSHTTPCookie requestHeaderFieldsWithCookies:cookieStorage.cookies];
+    
+    
+    // new cookie getter
+//    NSLog(@"dicCookies:%@",dicCookies);
+//    if (!dicCookies) {
+//        [self.configuration.websiteDataStore.httpCookieStore getAllCookies:^(NSArray<NSHTTPCookie *> * cookies) {
+//            NSLog(@"get");
+//            for (NSHTTPCookie *cookie in cookies) {
+//                NSLog(@"key:%@, value:%@",cookie.name, cookie.value);
+//            }
+//            dicCookies = [NSHTTPCookie requestHeaderFieldsWithCookies:cookies];
+//            NSLog(@"dicCookies:%@",dicCookies);
+//            //        dispatch_async(dispatch_get_main_queue(), ^{
+//            //            //回调或者说是通知主线程刷新，
+//            //        });
+//
+//        }];
+//    } else {
+//        [self loadVideo:type movieId:movieId dicCookies:dicCookies];
+//    }
+    
     // 构造请求
-    NSString *urlString = [NSString stringWithFormat:@"https://m.pear2.org/api/movieplay/GetMovieCloud/%@?onlyCzn=%@",movieId,type];
+//     old urlString
+    NSString *urlString = [NSString stringWithFormat:@"https://d.pear2.me/api/movieplay/GetMovieCloud/%@?onlyCzn=%@",movieId,type];
+    
+//     new urlString
+//    NSString *urlString = [NSString stringWithFormat:@"https://d.pear2.org/api/movieplay/GetMovieCloud/%@?onlyCzn=%@",movieId,type];
+    NSURL *URL = [NSURL URLWithString:urlString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+    // 注入cookie
+    [request setValue:[dicCookies objectForKey:@"Cookie"] forHTTPHeaderField:@"Cookie"];
+    NSURLSession *session = [NSURLSession sharedSession];
+    // 发送请求
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                NSLog(@"请求失败");
+            } else {
+                NSDictionary * responseDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                NSLog(@"%@",responseDict);
+                NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                NSLog(@"jsonString:%@",jsonString);
+                NSString *js = [NSString stringWithFormat:@"window.webkit.messageHandlers.play.postMessage('%@')", jsonString];
+                NSLog(@"js:%@",js);
+                [self evaluateJavaScript:js completionHandler:nil];
+                return ;
+                NSArray *list = responseDict[@"resolution"];
+                if (list.count > 0) {
+                    NSDictionary *dic = list.firstObject;
+                    NSString *videoUrl = dic[@"url"];
+
+                    NSString *m3u8VideoUrl = @"";
+                    NSString *mp4VideoUrl = @"";
+
+                    if([type isEqualToString:@"1"]) {
+                        mp4VideoUrl = videoUrl;
+                    } else{
+                        m3u8VideoUrl = videoUrl;
+                    }
+
+                    NSMutableDictionary *outDic = [NSMutableDictionary dictionary];
+                    outDic[@"movieId"] = responseDict[@"mov"];
+                    outDic[@"name"] = responseDict[@"name"];
+                    outDic[@"thumbnail"] = responseDict[@"thumbnail"];
+                    outDic[@"mp4VideoUrl"] = mp4VideoUrl;
+                    outDic[@"m3u8VideoUrl"] = m3u8VideoUrl;
+                    NSString *paramString = [[outDic chx_URLParameterString] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                    NSString *openUrlString =  [NSString stringWithFormat:@"hgplayer://www.hgplayer.com/play?%@",paramString];
+                    NSURL *openUrl = [NSURL URLWithString:openUrlString];
+                    [[UIApplication sharedApplication] openURL:openUrl];
+                }
+            }
+        });
+    }];
+    //开始请求
+    [dataTask resume];
+}
+
+%new
+- (void)loadVideo:(NSString *)type movieId:(NSString *)movieId dicCookies:(NSDictionary *)dicCookies{
+    // new urlString
+    NSString *urlString = [NSString stringWithFormat:@"https://d.pear2.org/api/movieplay/GetMovieCloud/%@?onlyCzn=%@",movieId,type];
     NSURL *URL = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
     // 注入cookie
