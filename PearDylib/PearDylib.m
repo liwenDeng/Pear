@@ -5,7 +5,7 @@
 //  PearDylib
 //
 //  Created by dengliwen on 2018/6/28.
-//  Copyright (c) 2018年 dsjk. All rights reserved.
+//  Copyright (c) 2018年 dengliwen. All rights reserved.
 //
 
 #import "PearDylib.h"

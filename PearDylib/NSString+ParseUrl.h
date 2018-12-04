@@ -3,7 +3,7 @@
 //  PearDylib
 //
 //  Created by dengliwen on 2018/6/28.
-//  Copyright © 2018年 dsjk. All rights reserved.
+//  Copyright © 2018年 dengliwen. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
