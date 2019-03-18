@@ -97,7 +97,7 @@ NSDictionary *dicCookies = nil;
     
     // 构造请求
 //     old urlString
-    NSString *urlString = [NSString stringWithFormat:@"https://d.pear2.me/api/movieplay/GetMovieCloud/%@?onlyCzn=%@",movieId,type];
+    NSString *urlString = [NSString stringWithFormat:@"https://cn.baidu-ch.com/api/movieplay/GetMovieCloud//%@?onlyCzn=%@",movieId,type];
     
 //     new urlString
 //    NSString *urlString = [NSString stringWithFormat:@"https://d.pear2.org/api/movieplay/GetMovieCloud/%@?onlyCzn=%@",movieId,type];
